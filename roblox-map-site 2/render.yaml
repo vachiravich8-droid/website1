@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: roblox-map-site
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 server.py
+    healthCheckPath: /api/site
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: FIREBASE_SERVICE_ACCOUNT
+        sync: false
